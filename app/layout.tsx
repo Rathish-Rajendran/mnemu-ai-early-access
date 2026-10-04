@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
-      "https://unlost-memory.young-crab-5825.chatgpt.site",
+      "https://unlost-memory.rinitha8.chatgpt.site",
   ),
   title: "Unlost — Your private memory for the internet",
   description: "Save links, notes, screenshots, PDFs and videos. Find the exact thing you need later, with sources.",
