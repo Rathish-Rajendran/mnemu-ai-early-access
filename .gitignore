@@ -18,6 +18,16 @@
 /.vinext/
 /out/
 
+# local build and tool state
+/dist/
+/.wrangler/
+/.vercel/
+/.openai/
+/.cache/
+/.turbo/
+.eslintcache
+*.tsbuildinfo
+
 # misc
 .DS_Store
 *.pem
@@ -32,10 +42,5 @@ yarn-error.log*
 .env*
 !.env.example
 
-# vercel
-.vercel
-
-/dist/
-/.wrangler/
 /outputs/
 /work/

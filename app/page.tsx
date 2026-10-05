@@ -1,5 +1,6 @@
-const earlyAccessUrl =
-  process.env.NEXT_PUBLIC_EARLY_ACCESS_URL ?? "https://docs.google.com/forms/";
+import { httpsUrl } from "../lib/safe-url";
+
+const earlyAccessUrl = httpsUrl(process.env.NEXT_PUBLIC_EARLY_ACCESS_URL);
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
@@ -7,16 +8,16 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Unlost home">
-          <span className="brand-mark" aria-hidden="true">u</span>
-          <span>unlost</span>
+        <a className="brand" href="#top" aria-label="mnemu.ai home">
+          <span className="brand-mark" aria-hidden="true">m</span>
+          <span>mnemu.ai</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="#why">The problem</a>
           <a href="#how">How it works</a>
           <a href="#privacy">Privacy</a>
         </nav>
-        <a className="button button-small button-dark" href={earlyAccessUrl} target="_blank" rel="noreferrer">
+        <a className="button button-small button-dark" href={earlyAccessUrl} target="_blank" rel="noopener noreferrer">
           Get early access <Arrow />
         </a>
       </header>
@@ -31,11 +32,11 @@ export default function Home() {
             You saved it.<br />Now <span>where is it?</span>
           </h1>
           <p className="hero-description">
-            Unlost turns scattered links, screenshots, notes, PDFs and videos
-            into one private memory you can actually search.
+            Send Reels, links, screenshots, notes, videos or files to mnemu.ai.
+            It remembers and organizes everything for you, so you can retrieve the right thing in an instant.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href={earlyAccessUrl} target="_blank" rel="noreferrer">
+            <a className="button button-primary" href={earlyAccessUrl} target="_blank" rel="noopener noreferrer">
               Join the early access list <Arrow />
             </a>
             <a className="text-link" href="#how">
@@ -45,31 +46,31 @@ export default function Home() {
           <p className="microcopy">Free to join · No spam · Early members shape the product</p>
         </div>
 
-        <div className="memory-demo" aria-label="Preview of Unlost search results">
+        <div className="memory-demo" aria-label="Preview of mnemu.ai search results">
           <div className="orbit orbit-one" aria-hidden="true">PDF</div>
           <div className="orbit orbit-two" aria-hidden="true">IMG</div>
           <div className="app-window">
             <div className="window-bar">
-              <span className="window-brand"><span className="mini-mark">u</span> unlost</span>
+              <span className="window-brand"><span className="mini-mark">m</span> mnemu.ai</span>
               <span className="window-status">12,418 memories</span>
             </div>
             <div className="search-box">
               <span aria-hidden="true">⌕</span>
-              <p>that video about pricing a new app...</p>
+              <p>that Reel about a high-protein pasta recipe...</p>
               <kbd>↵</kbd>
             </div>
             <div className="answer-card">
               <div className="answer-label">Best match</div>
-              <h2>Start with one paid plan—not five.</h2>
+              <h2>Blend cottage cheese into the sauce.</h2>
               <p>
-                The speaker recommends validating willingness to pay before
-                building usage-based tiers.
+                The recipe uses cottage cheese, tomato sauce and pasta water
+                for a creamy, high-protein sauce.
               </p>
               <div className="source-row">
                 <span className="source-icon video-icon" aria-hidden="true">▶</span>
                 <div>
-                  <strong>How to price your first SaaS</strong>
-                  <small>YouTube · 18:42</small>
+                  <strong>Creamy high-protein pasta</strong>
+                  <small>Instagram Reel · 00:31</small>
                 </div>
                 <span className="source-time">Jump to moment →</span>
               </div>
@@ -78,7 +79,7 @@ export default function Home() {
               <span className="source-icon note-icon" aria-hidden="true">Aa</span>
               <div>
                 <strong>Your note from 3 weeks ago</strong>
-                <p>“Keep the free plan useful, but make the habit paid.”</p>
+                <p>“Add spinach and chilli flakes before serving.”</p>
               </div>
             </div>
           </div>
@@ -88,39 +89,39 @@ export default function Home() {
 
       <section className="ticker" aria-label="Supported content types">
         <div>
-          <span>LINKS</span><b>✦</b><span>VIDEOS</span><b>✦</b><span>NOTES</span>
-          <b>✦</b><span>PDFs</span><b>✦</b><span>SCREENSHOTS</span><b>✦</b>
-          <span>VOICE</span><b>✦</b><span>ANYTHING WORTH REMEMBERING</span>
+          <span>INSTAGRAM REELS</span><b>✦</b><span>YOUTUBE</span>
+          <b>✦</b><span>SCREENSHOTS</span><b>✦</b><span>PDFs</span><b>✦</b>
+          <span>NOTES</span><b>✦</b><span>ANYTHING WORTH REMEMBERING</span>
         </div>
       </section>
 
       <section className="problem section" id="why">
         <div className="section-intro">
           <p className="section-number">01 / THE PROBLEM</p>
-          <h2>Bookmarks aren&apos;t memory.</h2>
+          <h2>Everything worth remembering is trapped somewhere else.</h2>
           <p>
-            We save more than ever—and find less of it. The useful idea is
-            somewhere in a folder, a chat, a screenshot or a video timeline.
+            A useful Reel saved on Instagram. A useful piece of information sent to yourself on WhatsApp.
+            A screenshot buried in Photos. You saved it because it mattered.
           </p>
         </div>
         <div className="problem-grid">
           <article className="pain-card pain-card-blue">
             <span className="card-index">01</span>
-            <div className="scribble" aria-hidden="true">427 saved</div>
-            <h3>Saved ≠ found</h3>
-            <p>Your bookmarks become a graveyard you promise to revisit.</p>
+            <div className="scribble" aria-hidden="true">saved across 7 apps</div>
+            <h3>Scattered across apps</h3>
+            <p>Your knowledge is divided between Instagram, YouTube, WhatsApp, screenshots and files.</p>
           </article>
           <article className="pain-card pain-card-lime">
             <span className="card-index">02</span>
-            <div className="folder-stack" aria-hidden="true"><i>WORK</i><i>READ</i><i>LATER?</i></div>
-            <h3>Folders become chores</h3>
-            <p>Organizing everything takes more energy than saving it.</p>
+            <div className="folder-stack" aria-hidden="true"><i>INSTAGRAM</i><i>WHATSAPP</i><i>PHOTOS</i></div>
+            <h3>Saved, but effectively lost</h3>
+            <p>App-specific saves and self-chats quickly become searchable graveyards.</p>
           </article>
           <article className="pain-card pain-card-cream">
             <span className="card-index">03</span>
             <div className="forgotten-query" aria-hidden="true">“what was that thing…”</div>
-            <h3>Keywords fail you</h3>
-            <p>You remember the idea—but not the exact words or where it lived.</p>
+            <h3>You remember the idea</h3>
+            <p>Traditional search fails when you forget the title, wording and which app contained it.</p>
           </article>
         </div>
       </section>
@@ -133,9 +134,9 @@ export default function Home() {
         <div className="steps">
           <article>
             <span className="step-number">1</span>
-            <div className="step-visual capture-visual" aria-hidden="true"><span>Share to unlost</span><b>+</b></div>
-            <h3>Capture anything</h3>
-            <p>Share from your phone, save from the browser, or upload directly.</p>
+            <div className="step-visual capture-visual" aria-hidden="true"><span>Share to mnemu.ai</span><b>+</b></div>
+            <h3>Capture from anywhere</h3>
+            <p>Share from your phone, browser or the apps you already use.</p>
           </article>
           <article>
             <span className="step-number">2</span>
@@ -143,7 +144,7 @@ export default function Home() {
               <span>summary</span><span>people</span><span>ideas</span><span>moments</span>
             </div>
             <h3>Let it understand</h3>
-            <p>AI reads, listens and watches—then remembers the useful context.</p>
+            <p>AI reads, listens and watches what the source allows, then remembers the useful context.</p>
           </article>
           <article>
             <span className="step-number">3</span>
@@ -157,16 +158,14 @@ export default function Home() {
       <section className="promise section" id="privacy">
         <div className="promise-card">
           <p className="section-number">03 / OUR PROMISE</p>
-          <h2>Your second brain shouldn&apos;t belong to someone else.</h2>
+          <h2>Your memories are personal. We&apos;re building mnemu.ai to keep them that way.</h2>
           <p className="promise-copy">
-            Unlost is being designed private by default. Your saved memories
-            stay yours, remain traceable to their sources, and can be deleted
-            whenever you choose.
+            Your saved content will be private to your account, encrypted in transit
+            and at rest, and never made public unless you choose to share it.
           </p>
           <div className="promise-list">
             <span><b>01</b> Private by default</span>
-            <span><b>02</b> Sources, not mystery answers</span>
-            <span><b>03</b> Export and delete anytime</span>
+            <span><b>02</b> Export or delete your memories</span>
           </div>
         </div>
       </section>
@@ -177,16 +176,16 @@ export default function Home() {
         <p className="section-number">COMING SOON</p>
         <h2>Stop losing the things<br />you wanted to remember.</h2>
         <p>Join the private beta and help build a calmer way to remember the internet.</p>
-        <a className="button button-primary button-large" href={earlyAccessUrl} target="_blank" rel="noreferrer">
+        <a className="button button-primary button-large" href={earlyAccessUrl} target="_blank" rel="noopener noreferrer">
           Register for early access <Arrow />
         </a>
-        <small>No spam. Just meaningful product updates and your invite.</small>
+        <small>Your email is used only for beta invitations and meaningful product updates. Registration is managed through Google Forms.</small>
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#top"><span className="brand-mark" aria-hidden="true">u</span><span>unlost</span></a>
-        <p>Your private memory for the internet.</p>
-        <p>© 2026 Unlost · Built for curious minds.</p>
+        <a className="brand footer-brand" href="#top"><span className="brand-mark" aria-hidden="true">m</span><span>mnemu.ai</span></a>
+        <p>Your private memory across apps.</p>
+        <p>© 2026 mnemu.ai · Built for curious minds.</p>
       </footer>
     </main>
   );

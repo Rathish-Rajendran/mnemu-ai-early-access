@@ -1,28 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { configuredSiteUrl, siteUrl } from "../lib/safe-url";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ??
-      "https://unlost-memory.rinitha8.chatgpt.site",
-  ),
-  title: "Unlost — Your private memory for the internet",
-  description: "Save links, notes, screenshots, PDFs and videos. Find the exact thing you need later, with sources.",
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  metadataBase: siteUrl(configuredSiteUrl()),
+  title: "mnemu.ai: Your private memory across apps",
+  description: "Send anything to mnemu.ai. It remembers and organizes your links, screenshots, notes, videos and files, so you can retrieve them instantly.",
+  icons: { icon: `${basePath}/favicon.svg`, shortcut: `${basePath}/favicon.svg` },
   openGraph: {
-    title: "You saved it. Now where is it?",
-    description: "Your private memory for the internet.",
+    title: "Everything worth remembering. Found again.",
+    description: "Your private memory across apps.",
     type: "website",
-    images: [{ url: "/og.png", width: 1734, height: 907, alt: "Unlost — Your private memory for the internet" }],
+    images: [{ url: "/og.png", width: 1733, height: 907, alt: "mnemu.ai: Your private memory across apps" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "You saved it. Now where is it?",
-    description: "Your private memory for the internet.",
+    title: "Everything worth remembering. Found again.",
+    description: "Your private memory across apps.",
     images: ["/og.png"],
   },
 };
@@ -30,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
