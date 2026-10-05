@@ -5,6 +5,7 @@
   --white: #fffefa;
   --blue: #3157ff;
   --lime: #caff4a;
+  --soft-green: #DDE7D6;
   --orange: #ff7450;
   --border: 2px solid var(--ink);
 }
@@ -225,7 +226,7 @@ kbd {
   display: inline-block;
   margin-bottom: 13px;
   padding: 4px 7px;
-  background: var(--lime);
+  background: var(--soft-green);
   border: 1px solid var(--ink);
   font-family: var(--font-geist-mono), monospace;
   font-size: .58rem;
@@ -255,7 +256,7 @@ kbd {
   font-size: .62rem;
 }
 .video-icon { background: var(--orange); color: white; }
-.note-icon { background: var(--lime); }
+.note-icon { background: var(--soft-green); }
 .source-time { color: var(--blue); font-size: .63rem; font-weight: 800; }
 .result-card {
   padding: 13px 15px;
@@ -275,7 +276,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--lime);
+  background: var(--soft-green);
   border: var(--border);
   box-shadow: 4px 4px 0 var(--ink);
   font-family: var(--font-geist-mono), monospace;
@@ -294,7 +295,7 @@ kbd {
   background: var(--paper);
   border: var(--border);
   border-radius: 50%;
-  box-shadow: 4px 4px 0 var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
   font-family: var(--font-geist-mono), monospace;
   font-size: .62rem;
   font-weight: 850;
